@@ -18,7 +18,7 @@ The idea is that you create a single `PostgresNotifyFlowable`, providing it all 
 The standard Postgres JDBC driver API is built around polling to retrieve LISTEN/NOTIFY messages. This might be wasteful in some scenarios, but at the same time one might not want to forgo the advantages of using the standard driver over a non-standard non-polling based one. This code helps you minimize the overhead by making it simple to have centralized polling over a single connection.
 
 
-# Setup
+## Setup
 
 Add [JitPack](https://jitpack.io/) to your repositories:
 ```groovy
