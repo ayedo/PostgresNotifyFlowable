@@ -47,7 +47,7 @@ val channels = PostgresNotifyFlowable.forChannels(
     jdbcUrl = db.jdbcUrl,
     user = db.username,
     password = db.password,
-    channels = listOf("hello"))
+    channels = listOf("test"))
 
 channels
     .filter({ it.name == "test" })
