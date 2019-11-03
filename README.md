@@ -17,18 +17,47 @@ The idea is that you create a single `PostgresNotifyFlowable`, providing it all 
 
 The standard Postgres JDBC driver API is built around polling to retrieve LISTEN/NOTIFY messages. This might be wasteful in some scenarios, but at the same time one might not want to forgo the advantages of using the standard driver over a non-standard non-polling based one. This code helps you minimize the overhead by making it simple to have centralized polling over a single connection.
 
-## How to Use
+
+# Setup
+
+Add [JitPack](https://jitpack.io/) to your repositories:
+```groovy
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+Add the dependency:
+
+```groovy
+	dependencies {
+		implementation 'com.github.ayedo:PostgresNotifyFlowable:v1.2.0'
+	}
 
 ```
-  val channels = PostgresNotifyFlowable.forChannels(
-        jdbcUrl = db.jdbcUrl,
-        user = db.username,
-        password = db.password,
-        channels = listOf("hello"))
-  
-   channels
-        .filter({ it.name == "test" })
-        .subscribe({ notification: PGNotification ->
-           
-        })
+
+## How to use
+
+### Kotlin
+```kotlin
+val channels = PostgresNotifyFlowable.forChannels(
+    jdbcUrl = db.jdbcUrl,
+    user = db.username,
+    password = db.password,
+    channels = listOf("hello"))
+
+channels
+    .filter({ it.name == "test" })
+    .subscribe({ notification: PGNotification ->
+        println("${it.name} ${it.parameter}")
+    })
+```
+### Java
+```java
+Flowable<PGNotification> notifications = PostgresNotifyFlowable.INSTANCE.forChannels("url", "user", "password", List.of("test"));
+notifications.filter(notification -> notification.getName().equals("test"))
+        .subscribe(notification -> System.out.println(notification.getName() + " " + notification.getParameter()));
 ```
