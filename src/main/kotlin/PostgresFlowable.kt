@@ -15,7 +15,7 @@ object PostgresNotifyFlowable {
     private val logger = LoggerFactory.getLogger(this::class.java)
 
     /**
-     *  Returns a Flowable which for every NOTIFY send on any of the channels in [channels] will emit an event.
+     *  Returns a [Flowable] which for every NOTIFY send on any of the channels in [channels] will emit an event.
      *  The connection will be polled every [pollingPeriodMs]. If a database call is unsuccessful, a reconnection will
      *  be initiated. In between trying to reconnect, it is going to wait [reconnectionTimeoutMs].
      *
