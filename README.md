@@ -22,21 +22,17 @@ The standard Postgres JDBC driver API is built around polling to retrieve LISTEN
 
 Add [JitPack](https://jitpack.io/) to your repositories:
 ```groovy
-allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+repositories {
+    maven { url 'https://jitpack.io' }
+}
 ```
 
 Add the dependency:
 
 ```groovy
-	dependencies {
-		implementation 'com.github.ayedo:PostgresNotifyFlowable:v1.2.0'
-	}
-
+dependencies {
+    implementation 'com.github.ayedo:PostgresNotifyFlowable:v1.2.0'
+}
 ```
 
 ## How to use
