@@ -100,4 +100,22 @@ object PostgresNotifyFlowable {
         return retryingObservable.share()
     }
 
+    /**
+     * A variant of [forChannels] with defaults set, to make usage from Java more ergonomic
+     */
+    fun forChannels(
+        jdbcUrl: String,
+        user: String,
+        password: String,
+        channels: List<String>
+        ): Flowable<PGNotification> = forChannels(
+        jdbcUrl = jdbcUrl,
+        user = user,
+        password = password,
+        pollingPeriodMs = 1000,
+        reconnectionTimeoutMs = 5000,
+        channels = channels,
+        backpressureStrategy = BUFFER
+    )
+
 }

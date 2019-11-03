@@ -1,4 +1,5 @@
 import ch.sponty.backend.common.database.postgres.PostgresNotifyFlowable
+import io.reactivex.BackpressureStrategy
 import io.reactivex.schedulers.Schedulers
 import org.junit.jupiter.api.Test
 import org.postgresql.jdbc.PgConnection
@@ -28,7 +29,7 @@ class PostgresFlowableTest {
             password = db.password,
             pollingPeriodMs = 1000,
             channels = listOf("test"),
-            backpressureStrategy = BUFFER
+            backpressureStrategy = BackpressureStrategy.BUFFER
         )
 
         val latch = CountDownLatch(4)
