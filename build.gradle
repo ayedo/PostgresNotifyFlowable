@@ -1,0 +1,38 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.50'
+}
+
+group 'ayedo'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+    implementation 'org.postgresql:postgresql:42.2.8'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.13'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+    testImplementation 'org.assertj:assertj-core:3.12.2'
+    testImplementation 'org.testcontainers:testcontainers:1.12.3'
+    testImplementation "org.testcontainers:junit-jupiter:1.12.3"
+    testImplementation "org.testcontainers:postgresql:1.12.3"
+
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+    testRuntime 'org.slf4j:slf4j-simple:1.7.25'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
