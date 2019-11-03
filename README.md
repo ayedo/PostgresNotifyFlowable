@@ -9,7 +9,7 @@ Consume Postgres LISTEN/NOTIFY messages in your JVM applications using RxJava, a
 
 ## About
 
-The Postgres JDBC driver has built in support for retrieving LISTEN/NOTIFY messages. The provided API is functional and basic. This code is an adapter from this basic API to RxJava to allow for a much richer asynchronous API.
+The Postgres JDBC driver has built in support for retrieving LISTEN/NOTIFY messages. The provided API is pretty basic. This code is an adapter from this basic API to RxJava to allow for a much richer asynchronous API.
 
 Further, Postgres requires a dedicated connection to call LISTEN on. One has to be careful not to be too wasteful with database connections.  This code enables you to ergonomically share a single such connection for multiple usages in your application by making use of the reactive extensions `share()` functionality.
 
